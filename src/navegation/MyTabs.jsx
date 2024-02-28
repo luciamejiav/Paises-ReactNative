@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SettingsScreen from './SettingsScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import HomeScreen from './HomeScreen';
-import HomeDetails from './HomeDetails';
+import HomeScreen from '../screens/HomeScreen';
+import HomeDetails from '../screens/HomeDetails';
 
 const Tab = createBottomTabNavigator();
 

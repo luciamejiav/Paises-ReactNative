@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
-import { getPaisesAll } from './PaisesAPI';
-import Card from './Card';
+import { getPaisesAll } from '../services/PaisesAPI';
+import Card from '../components/Card';
 import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
