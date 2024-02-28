@@ -12,17 +12,28 @@ export default function HomeDetails({ route }) {
     );
   }
 
+const currenciesName = []
+for (const currency in item.currencies) {
+  currenciesName.push(`${item.currencies[currency].name} ${item.currencies[currency].symbol}`);
+}
+
+const languagesName = []
+for (const language in item.languages) {
+  languagesName.push(`${item.languages[language]}`);
+}
+
   return (
     <View style={styles.column}>
       <Image source={{ uri: item.flags.png }} style={styles.image} resizeMode="contain" />
       <View style={[styles.column]}>
-        <Text style={[styles.text, { fontWeight: "bold", fontSize: 24 }]}>{item.name.common}</Text>
-        <Text style={[styles.text, { fontWeight: "bold", fontSize: 22, marginBottom: 10 }]}>{item.name.official}</Text>
+        <Text style={styles.textCommon}>{item.name.common}</Text>
+        <Text style={styles.textOfficial}>{item.name.official}</Text>
         <Text style={styles.text}>Capital: {item.capital}</Text>
         <Text style={styles.text}>Continente: {item.continents}</Text>
         <Text style={styles.text}>Población: {item.population} habitantes</Text>
-        <Text style={styles.text}>Moneda usada: {item.currencies.EUR.name}  {item.currencies.EUR.symbol}</Text> 
-        <Text style={styles.text}>Población: {item.population} habitantes</Text>
+        <Text style={styles.text}>Moneda usada:  {currenciesName.join('\n')}</Text> 
+        <Text style={styles.text}>Idiomas: {languagesName.join()} </Text>
+        <Text style={styles.text}>Area: {item.area} km cuadrados</Text>
         <Text style={styles.text}>GoogleMaps: {item.maps.googleMaps}</Text>
       </View>
     </View>
@@ -47,4 +58,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 19,
   },
+  textCommon: {
+    fontWeight: "bold",
+    fontSize: 24
+  },
+  textOfficial: { 
+    fontWeight: "bold", 
+    fontSize: 22, 
+    marginBottom: 10 },
 });
