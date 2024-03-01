@@ -2,9 +2,8 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, } from 'react-native';
 
 export default function HomeDetails({ route }) {
-  const { item } = route.params; // Use optional chaining to handle undefined route.params
+  const { item } = route.params; 
   if (!item) {
-    // Handle the case where item is undefined
     return (
       <View>
         <Text>Loading...</Text>
@@ -12,16 +11,18 @@ export default function HomeDetails({ route }) {
     );
   }
 
-const currenciesName = []
-for (const currency in item.currencies) {
-  currenciesName.push(`${item.currencies[currency].name} ${item.currencies[currency].symbol}`);
-}
+  // bucles para que salga todo lo que tienen dentro 
+  const currenciesName = []
+  for (const currency in item.currencies) {
+    currenciesName.push(`${item.currencies[currency].name} ${item.currencies[currency].symbol}`);
+  }
 
-const languagesName = []
-for (const language in item.languages) {
-  languagesName.push(`${item.languages[language]}`);
-}
+  const languagesName = []
+  for (const language in item.languages) {
+    languagesName.push(`${item.languages[language]}`);
+  }
 
+  //con esto mostramos los datos de la api en la pantalla de details
   return (
     <View style={styles.column}>
       <Image source={{ uri: item.flags.png }} style={styles.image} resizeMode="contain" />
