@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     margin: 5,
-    backgroundColor: "#b2e2f2",
+    //backgroundColor: "#b2e2f2",
     borderRadius: 10,
     padding: 5,
   },
