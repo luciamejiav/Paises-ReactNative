@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import { View, Text, Button, Switch } from "react-native";
+import { View, Text, StyleSheet, Switch } from "react-native";
 import { EventRegister } from "react-native-event-listeners";
 import themeContext from "../theme/themeContext";
 
@@ -10,10 +10,11 @@ export default function SettingsScreen() {
   
 
     return(
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.backgroundColor }}>
-            <Text style={{color: theme.color}}>Modo Oscuro</Text>
+        <View style={[styles.view, {backgroundColor: theme.backgroundColor}]}>
+            <Text style={[styles.text, {color: theme.color}]}>Modo Oscuro</Text>
             <Switch 
                 value={darkMode} 
+                style={styles.swicth}
                 onValueChange={(value) => {
                     setDarkMode(value)
                     EventRegister.emit('ChangeTheme', value)
@@ -21,3 +22,18 @@ export default function SettingsScreen() {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    view: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center'
+    },
+    text: {
+        fontSize: 30,
+    },
+    swicth: {
+        marginTop: 10,
+        transform: [{scaleX: 1.5}, {scaleY: 1.5}]
+    }
+  });

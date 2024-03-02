@@ -5,11 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import {createNativeStackNavigator, DarkTheme} from "@react-navigation/native-stack";
 import HomeScreen from '../screens/HomeScreen';
 import HomeDetails from '../screens/HomeDetails';
-import { StyleSheet, } from 'react-native';
-import React, {useState, useEffect} from "react";
-import { EventRegister } from 'react-native-event-listeners';
-import theme from '../theme/theme';
-import themeContext from '../theme/themeContext';
+import React from "react";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,17 +41,21 @@ export default function Navigation() {
       <Tab.Navigator
         initialRouteName='HomePais'
         screenOptions={{
-          tabBarActiveTintColor: 'green', //la ventana en la que estemos sale en verde
+          tabBarActiveTintColor: '#3498db', //la ventana en la que estemos sale en azul
+          
         }}
       >
         <Tab.Screen
-          name="Home"
-          component={MyStacks} //llama al método de arriba, lo separamos para que quede más ordenado
+          name="Paises"//llama al método de arriba, lo separamos para que quede más ordenado
+          component={MyStacks} 
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" size={size} color={color} />
-            ),
-            headerShown: false //para que aparezca el header con el nombre
+            ),headerStyle: {
+              height: 100, // Ajusta el tamaño de la barra de navegación
+              backgroundColor: '#3498db', // Color de fondo de la barra de navegación
+            },
+            headerShown: true //para que aparezca el header con el nombre
           }}
         />
         <Tab.Screen
@@ -70,9 +70,3 @@ export default function Navigation() {
       </Tab.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  bg: {
-    backgroundColor: "#008f39",
-  },
-});

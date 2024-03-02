@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
       flex: 1,
       width: "100%",
       padding: 10,
-      marginTop: 10
+      marginTop: 10,
+      backgroundColor: '#3498db'
     },
     image: {
       width: 80,

@@ -17,12 +17,16 @@ export default function Card({ item }) {
 const styles = StyleSheet.create({
   image: {
     width: 80,
-    height: 80
+    height: 80,
+    marginLeft:10
   },
   row: {
     flex: 1,
     flexDirection: "row",
-    margin: 10
+    margin: 5,
+    backgroundColor: "#b2e2f2",
+    borderRadius: 10,
+    padding: 5,
   },
   column: {
     flex: 1,
