@@ -1,22 +1,24 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { StyleSheet, View, Image, Text } from 'react-native'
+import themeContext from '../theme/themeContext';
 
 export default function Card({ item }) {
+  const theme = useContext(themeContext)
   return (
     <View style={styles.row}>
-      <Image source={{ uri: item.flags.png }} style={styles.image} resizeMode="contain" />
+      <Image source={{ uri: item.flags.png }} style={{width: 80, height: 80, backgroundColor: theme.backgroundColor}} resizeMode="contain" />
       <View style={[styles.column, { marginLeft: 10 }]}>
-        <Text style={[styles.text, { fontWeight: "bold" }]}>{item.name.common}</Text>
+        <Text style={[styles.text, { fontWeight: "bold" }, {color: theme.color}]}>{item.name.common}</Text>
       </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  image: {
+ /* image: {
     width: 80,
     height: 80
-  },
+  },*/
   row: {
     flex: 1,
     flexDirection: "row",
