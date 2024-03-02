@@ -11,7 +11,7 @@ export default function SettingsScreen() {
 
     return(
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: theme.backgroundColor }}>
-            <Text style={{color: theme.color}}>Settings Screen</Text>
+            <Text style={{color: theme.color}}>Modo Oscuro</Text>
             <Switch 
                 value={darkMode} 
                 onValueChange={(value) => {

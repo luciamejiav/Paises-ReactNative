@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { View, Text, Image, StyleSheet, } from 'react-native';
+import themeContext from "../theme/themeContext";
 
 export default function HomeDetails({ route }) {
+
+  const theme = useContext(themeContext);
   
   const { item } = route.params; 
   if (!item) {
@@ -28,15 +31,15 @@ export default function HomeDetails({ route }) {
     <View style={styles.column}>
       <Image source={{ uri: item.flags.png }} style={styles.image} resizeMode="contain" />
       <View style={[styles.column]}>
-        <Text style={styles.textCommon}>{item.name.common}</Text>
-        <Text style={styles.textOfficial}>{item.name.official}</Text>
-        <Text style={styles.text}>Capital: {item.capital}</Text>
-        <Text style={styles.text}>Continente: {item.continents}</Text>
-        <Text style={styles.text}>Población: {item.population} habitantes</Text>
-        <Text style={styles.text}>Moneda usada:  {currenciesName.join('\n')}</Text> 
-        <Text style={styles.text}>Idiomas: {languagesName.join()} </Text>
-        <Text style={styles.text}>Area: {item.area} km cuadrados</Text>
-        <Text style={styles.text}>GoogleMaps: {item.maps.googleMaps}</Text>
+        <Text style={[styles.textCommon, {color: theme.color}]}>{item.name.common}</Text>
+        <Text style={[styles.textOfficial, {color: theme.color}]}>{item.name.official}</Text>
+        <Text style={[styles.text, {color: theme.color}]}>Capital: {item.capital}</Text>
+        <Text style={[styles.text, {color: theme.color}]}>Continente: {item.continents}</Text>
+        <Text style={[styles.text, {color: theme.color}]}>Población: {item.population} habitantes</Text>
+        <Text style={[styles.text, {color: theme.color}]}>Moneda usada:  {currenciesName.join('\n')}</Text> 
+        <Text style={[styles.text, {color: theme.color}]}>Idiomas: {languagesName.join()} </Text>
+        <Text style={[styles.text, {color: theme.color}]}>Area: {item.area} km cuadrados</Text>
+        <Text style={[styles.text, {color: theme.color}]}>GoogleMaps: {item.maps.googleMaps}</Text>
       </View>
     </View>
   );

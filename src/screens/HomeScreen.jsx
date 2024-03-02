@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { getPaisesAll } from '../services/PaisesAPI';
 import Card from '../components/Card';
 import { useNavigation } from "@react-navigation/native";
+import themeContext from "../theme/themeContext";
+
+
 
 const HomeScreen = () => {
     const [paises, setPaises] = useState([]);
     const [currentPais, setCurrentPais] = useState(1);
     const [totalPais, setTotalPais] = useState(0);
+
+    const theme = useContext(themeContext);
 
     const navigation = useNavigation();
 
@@ -25,7 +30,7 @@ const HomeScreen = () => {
     }, []);
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
           <FlatList
             style={styles.list}
             data={paises}
