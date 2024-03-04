@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { View, Text, Image, StyleSheet, } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import themeContext from "../theme/themeContext";
 
 export default function HomeDetails({ route }) {
@@ -32,14 +32,46 @@ export default function HomeDetails({ route }) {
       <Image source={{ uri: item.flags.png }} style={styles.image} resizeMode="contain" />
       <View style={[styles.column]}>
         <Text style={[styles.textCommon, {color: theme.color}]}>{item.name.common}</Text>
+
         <Text style={[styles.textOfficial, {color: theme.color}]}>{item.name.official}</Text>
-        <Text style={[styles.text, {color: theme.color}]}>Capital: {item.capital}</Text>
-        <Text style={[styles.text, {color: theme.color}]}>Continente: {item.continents}</Text>
-        <Text style={[styles.text, {color: theme.color}]}>Población: {item.population} habitantes</Text>
-        <Text style={[styles.text, {color: theme.color}]}>Moneda usada:  {currenciesName.join('\n')}</Text> 
-        <Text style={[styles.text, {color: theme.color}]}>Idiomas: {languagesName.join()} </Text>
-        <Text style={[styles.text, {color: theme.color}]}>Area: {item.area} km cuadrados</Text>
-        <Text style={[styles.text, {color: theme.color}]}>GoogleMaps: {item.maps.googleMaps}</Text>
+
+        <Text style={[styles.text, {color: theme.color}]}>
+          <Text style={styles.boldText}>• Capital: </Text> 
+          {item.capital}
+        </Text>
+
+        <Text style={[styles.text, {color: theme.color}]}>
+          <Text style={styles.boldText}>• Continente: </Text> 
+          {item.continents}
+        </Text>
+
+        <Text style={[styles.text, {color: theme.color}]}>
+          <Text style={styles.boldText}>• Población: </Text> 
+          {item.population} habitantes
+        </Text>
+
+        <Text style={[styles.text, {color: theme.color}]}>
+          <Text style={styles.boldText}>• Moneda usada: </Text> 
+          {currenciesName.join('\n')}
+        </Text>
+
+        <Text style={[styles.text, {color: theme.color}]}>
+          <Text style={styles.boldText}>• Idiomas: </Text>{languagesName.join()}
+        </Text>
+
+        <Text style={[styles.text, {color: theme.color}]}>
+          <Text style={styles.boldText}>• Área: </Text>
+          {item.area} km cuadrados
+        </Text>
+
+        <Text style={[styles.text, {color: theme.color}]}>
+          <Text style={styles.boldText}>• GoogleMaps: </Text>{'\n'}
+          {item.maps.googleMaps}
+        </Text>
+
+        <TouchableOpacity onPress={() => Linking.openURL(`${item.maps.googleMaps}`)}>
+          <Text style={[styles.text, styles.boldText, styles.ml,{ color: '#3498db'}]}>Ir a la dirección en google maps</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -49,6 +81,7 @@ const styles = StyleSheet.create({
   image: {
     width: 360,
     height: 300,
+    marginLeft: 15
   },
   row: {
     flex: 1,
@@ -58,10 +91,11 @@ const styles = StyleSheet.create({
   column: {
     flex: 1,
     flexDirection: "column",
-    margin: 20,
+    margin: 10,
   },
   text: {
     fontSize: 19,
+    marginBottom: 8,
   },
   textCommon: {
     fontWeight: "bold",
@@ -70,5 +104,12 @@ const styles = StyleSheet.create({
   textOfficial: { 
     fontWeight: "bold", 
     fontSize: 22, 
-    marginBottom: 10 },
+    marginBottom: 10 
+  },
+  boldText: {
+    fontWeight: "bold",
+  },
+  ml: {
+    marginLeft: 12
+  }
 });

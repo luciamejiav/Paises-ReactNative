@@ -1,7 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
 import SettingsScreen from '../screens/SettingsScreen';
 import Stacks from './Stacks'
 
@@ -34,7 +33,10 @@ export default function Navigation() {
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" size={size} color={color} />
-            ),headerTitleStyle: {
+            ),headerStyle: {
+              height: 80, // Ajusta el tamaño de la barra de navegación
+              backgroundColor: '#3498db', // Color de fondo de la barra de navegación
+            },headerTitleStyle: {
               fontSize: 25, // Tamaño de la fuente del título
             },
             headerShown: true //para que aparezca el header con el nombre

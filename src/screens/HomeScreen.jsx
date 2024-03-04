@@ -117,13 +117,14 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 5,
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: 'gray',
+    borderWidth: 3,
+    borderColor: '#b2e2f2',
   },
   searchIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
+    width: 25,
+    height: 25,
+    marginRight: 10, 
+    marginLeft: 10,
   }
 });
 
