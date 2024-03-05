@@ -66,8 +66,7 @@ export default function HomeDetails({ route }) {
           </Text>
 
           <Text style={[styles.text, {color: theme.color}]}>
-            <Text style={styles.boldText}>• GoogleMaps: </Text>{'\n'}
-            {item.maps.googleMaps}
+            <Text style={styles.boldText}>• GoogleMaps: </Text>
           </Text>
 
           <TouchableOpacity onPress={() => Linking.openURL(`${item.maps.googleMaps}`)}>
