@@ -2,11 +2,14 @@ import React, {useContext} from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from 'react-native';
 import themeContext from "../theme/themeContext";
 
+//para mostrar los detalles de cada país
 export default function HomeDetails({ route }) {
 
   const theme = useContext(themeContext);
   
-  const { item } = route.params; 
+  const { item } = route.params; //parámetros de la ruta
+
+  //si no hay datos muestra un mensaje de cargando 
   if (!item) {
     return (
       <View>
@@ -15,18 +18,20 @@ export default function HomeDetails({ route }) {
     );
   }
 
-  // bucles para que salga todo lo que tienen dentro 
+  // bucles para que salga todo lo que tienen dentro currencies y languages
   const currenciesName = []
   for (const currency in item.currencies) {
-    currenciesName.push(`${item.currencies[currency].name} ${item.currencies[currency].symbol}`);
+    currenciesName.push(`${item.currencies[currency].name} ${item.currencies[currency].symbol}`); //sacamos el nombre de la moneda que se usa en ese país junto al símbolo
   }
-
+  
   const languagesName = []
   for (const language in item.languages) {
-    languagesName.push(`${item.languages[language]}`);
+    languagesName.push(`${item.languages[language]}`); //sacamos todos los idiomas que se hablan en un país
   }
 
-  //con esto mostramos los datos de la api en la pantalla de details
+  //con esto mostramos los datos que queremos de la api en la pantalla de details
+  //usamos .join('\n') para concatenar con un salto de linea y .join(', ') para separar por coma y espacio
+  //además añadimos un link para ir a google maps a ver la ubicación del país
   return (
     <ScrollView>
       <View style={styles.column}>
@@ -53,11 +58,11 @@ export default function HomeDetails({ route }) {
 
           <Text style={[styles.text, {color: theme.color}]}>
             <Text style={styles.boldText}>• Moneda usada: </Text> 
-            {currenciesName.join('\n')}
+            {currenciesName.join('\n') } 
           </Text>
 
           <Text style={[styles.text, {color: theme.color}]}>
-            <Text style={styles.boldText}>• Idiomas: </Text>{languagesName.join()}
+            <Text style={styles.boldText}>• Idiomas: </Text>{languagesName.join(', ')}
           </Text>
 
           <Text style={[styles.text, {color: theme.color}]}>

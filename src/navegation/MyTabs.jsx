@@ -9,22 +9,21 @@ const Tab = createBottomTabNavigator();
 //menú de navegación abajo
 export default function Navigation() {
       
-  //con esto ponemos el icono de abajo que hayamos clicado en verde e iniciamos siempre la app en home
   return (
       <Tab.Navigator
         screenOptions={{
-          tabBarActiveTintColor: '#3498db', //la ventana en la que estemos sale en azul
+          tabBarActiveTintColor: '#3498db',//con esto ponemos el icono de abajo que hayamos clicado en azul e iniciamos siempre la app en home
           
         }}
       >
         <Tab.Screen
           name="home"
-          component={Stacks} 
+          component={Stacks} //en stack tenemos la home, la homedetails y los settings
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" size={size} color={color} />
             ),
-            headerShown: false //para que aparezca el header con el nombre
+            headerShown: false //para que no aparezca el header con el nombre
           }}
         />
         <Tab.Screen

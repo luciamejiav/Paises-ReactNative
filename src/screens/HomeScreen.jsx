@@ -6,14 +6,16 @@ import { useNavigation } from "@react-navigation/native";
 import themeContext from "../theme/themeContext";
 
 const HomeScreen = () => {
+  //estados para gestionar lo necesario
   const [paises, setPaises] = useState([]);
   const [currentPais, setCurrentPais] = useState(1);
   const [totalPais, setTotalPais] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
 
-  const theme = useContext(themeContext);
-  const navigation = useNavigation();
+  const theme = useContext(themeContext); //tema para cambiar de claro a oscuro y viceversa
+  const navigation = useNavigation(); //navegación
 
+  //función para obtener la lista de paises
   const getPaises = () => {
     getPaisesAll()
       .then(json => {
@@ -26,22 +28,24 @@ const HomeScreen = () => {
       .catch(err => console.log("error", err));
   };
 
+  //manejador de cambios en la búsqueda
   const handleSearchTermChange = (text) => {
     setSearchTerm(text);
   };
 
+  //efecto para obtener la lista de paises
   useEffect(() => {
     getPaises();
   }, []);
 
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <View style={styles.searchContainer}>
-        <Image
+      <View style={styles.searchContainer}> 
+        <Image  //hacemos un contenedor para hacer la búsqueda, dentro colocamos la lupa para que se identifique mejor
           source={require('../img/lupa.png')}
           style={styles.searchIcon}
         />
-        <TextInput
+        <TextInput //y hacemos una caja de búsqueda para los paises
           style={styles.searchInput}
           placeholder="Buscar por nombre de país"
           value={searchTerm}
@@ -49,22 +53,25 @@ const HomeScreen = () => {
         />
       </View>
      
-      <FlatList
+      <FlatList //con la flatlist hacemos una lista con todos los países y dibujamos en ella los card
         style={styles.list}
         data={paises.filter((pais) =>
           pais.name.common.toLowerCase().includes(searchTerm.toLowerCase())
         )}
         renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('HomeDetails', { item: item })}
+          <TouchableOpacity //cuando pulsemos se hará un poco opaco
+            onPress={() => navigation.navigate('HomeDetails', { item: item })} //si pulsamos en cualquier país iremos a la segunda pantalla en la que aparecen los datos de dicho país
           >
             <Card key={item.id} item={item} />
           </TouchableOpacity>
         )}
         onEndReachedThreshold={0}
         onEndReached={() => {
+          //comprueba si hay más paises para cargar   
           if (currentPais < totalPais) {
+            // Llama a la función getPaises para cargar más países
             getPaises(currentPais + 1);
+            // Actualiza el estado de currentPais para reflejar el cambio en la página actual
             setCurrentPais(currentPais + 1);
           }
         }}

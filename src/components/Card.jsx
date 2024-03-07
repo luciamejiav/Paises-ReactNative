@@ -4,6 +4,7 @@ import themeContext from '../theme/themeContext';
 
 export default function Card({ item }) {
   const theme = useContext(themeContext)
+  //hacemos un card con lo que aparecerá en cada una, en nuestro caso la bandera y el nombre común de cada país
   return (
     <View style={styles.row}>
       <Image source={{ uri: item.flags.png }} style={[styles.image, {backgroundColor: theme.backgroundColor}]} resizeMode="contain" />

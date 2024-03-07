@@ -10,8 +10,8 @@ export default function StackCharacter() {
     return(
         <HomeStackNavigator.Navigator>
           <HomeStackNavigator.Screen 
-            name="Paises"  //titulo arriba
-            component={HomeScreen} 
+            name="Paises"  //titulo cabecera
+            component={HomeScreen} //pintamos la homescreen
             options={{
               tabBarIcon: ({ color, size }) => (
                 <MaterialCommunityIcons name="home" size={size} color={color} />

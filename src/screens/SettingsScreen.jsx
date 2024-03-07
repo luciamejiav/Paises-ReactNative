@@ -12,13 +12,14 @@ export default function SettingsScreen() {
     return(
         <View style={[styles.view, {backgroundColor: theme.backgroundColor}]}>
             <Text style={[styles.text, {color: theme.color}]}>Modo Oscuro</Text>
-            <Switch 
+            <Switch //si está on el modo oscuro se activa
                 value={darkMode} 
                 style={styles.swicth}
                 onValueChange={(value) => {
                     setDarkMode(value)
-                    EventRegister.emit('ChangeTheme', value)
-                    }} />
+                    EventRegister.emit('ChangeTheme', value) // Evento para notificar a otros componentes sobre el cambio de tema
+                }} 
+            />
         </View>
     )
 }

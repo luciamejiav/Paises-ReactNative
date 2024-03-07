@@ -1,3 +1,4 @@
+//aqui ponemos los colores que saldrán con los distintos temas que tenemos
 const theme = {
     light: {
         theme:'light',
