@@ -12,4 +12,4 @@ const theme = {
     }
 }
 
-export default theme;
+export default theme; //lo exportamos para poder usarlo en otras páginas

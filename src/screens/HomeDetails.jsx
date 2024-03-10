@@ -48,7 +48,7 @@ export default function HomeDetails({ route }) {
 
           <Text style={[styles.text, {color: theme.color}]}>
             <Text style={styles.boldText}>• Continente: </Text> 
-            {item.continents}
+            {item.continents.join(', ')}
           </Text>
 
           <Text style={[styles.text, {color: theme.color}]}>
